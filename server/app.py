@@ -44,12 +44,11 @@ def MNIST():
         file = request.files['file']
         img_bytes = file.read()
         class_id, probability = get_prediction_MNIST(image_bytes=img_bytes)
-        return jsonify({'class_id': class_id, 'probability': str(probability * 100)})
+        return jsonify({'class_id': class_id, 'probability': str(probability)})
 
 
 def transform_draw_image(image):
-    my_transforms = transforms.Compose([
-                                        transforms.Resize((28, 28), interpolation=Image.NEAREST),
+    my_transforms = transforms.Compose([transforms.Resize((28, 28), interpolation=Image.NEAREST),
                                         transforms.CenterCrop((28, 28)),
                                         transforms.Grayscale(num_output_channels=1),
                                         transforms.ToTensor(),
@@ -78,7 +77,7 @@ def MNIST_DRAW():
     data = request.json
     im = Image.open(io.BytesIO(base64.b64decode(data['bs64'])))
     class_id, probability = get_prediction_MNIST_Draw(image=im)
-    return jsonify({'class_id': class_id, 'probability': str(probability * 100)})
+    return jsonify({'class_id': class_id, 'probability': str(probability)})
 
 
 class Net(nn.Module):
@@ -107,7 +106,6 @@ def get_prediction_MNIST_(image_bytes):
         logits = model.forward(tensor)
     # print(logits)
     prob = torch.exp(logits)
-    print(prob)
     y = prob.detach()[0].numpy()
     x = [x for x in range(10)]
     dict = {}
@@ -125,4 +123,30 @@ def MNIST_():
         file = request.files['file']
         img_bytes = file.read()
         class_id, probability = get_prediction_MNIST_(image_bytes=img_bytes) 
-        return jsonify({'class_id': class_id, 'probability': str(probability*100)})
+        return jsonify({'class_id': class_id, 'probability': str(probability)})
+
+#Drw
+
+def get_prediction_MNIST_Draw_CNN(image):
+    tensor = transform_draw_image(image)
+    model = Net()
+    model.load_state_dict(torch.load('/mnt/i/ML/ML-2/server/MNIST_state_dict.pth'))
+    with torch.no_grad():
+        logits = model.forward(tensor)
+    # print(logits)
+    prob = torch.exp(logits)
+    y = prob.detach()[0].numpy()
+    x = [x for x in range(10)]
+    dict = {}
+    for a, b in zip(x, y):
+        dict[a] = b
+    max_key = max(dict, key=lambda k: dict[k])
+    return max_key, dict[max_key]
+
+
+@app.route('/api/MNIST/Draw/CNN', methods=['POST'])
+def MNIST_CNN():
+    data = request.json
+    im = Image.open(io.BytesIO(base64.b64decode(data['bs64'])))
+    class_id, probability = get_prediction_MNIST_Draw_CNN(image=im)
+    return jsonify({'class_id': class_id, 'probability': str(probability)})
