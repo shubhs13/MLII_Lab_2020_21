@@ -10,12 +10,12 @@ Web GUI Implementation using STREAMLIT Library of Python.
 
 #**1. MNIST - DIGIT RECOGNITION**
 
-![alt-text](https://github.com/dreamwalker1999/MLII_Lab_2020_21/blob/master/IMPLEMENTATION_GIFs/mnist.gif)
+![alt-text](https://github.com/dreamwalker1999/MLII_Lab_2020_21/blob/atharva/IMPLEMENTATION_GIFs/mnist.gif)
 
 #**2. CIFAR10 - CNN IMAGE CLASSIFICATION**
 
-![alt-text](https://github.com/dreamwalker1999/MLII_Lab_2020_21/blob/master/IMPLEMENTATION_GIFs/cifar10_cnn.gif)
+![alt-text](https://github.com/dreamwalker1999/MLII_Lab_2020_21/blob/atharva/IMPLEMENTATION_GIFs/cifar10_cnn.gif)
 
 #**3. CIFAR10 - FFNN IMAGE CLASSIFICATION**
 
-![alt-text](https://github.com/dreamwalker1999/MLII_Lab_2020_21/blob/master/IMPLEMENTATION_GIFs/cifar10_ffnn.gif)
+![alt-text](https://github.com/dreamwalker1999/MLII_Lab_2020_21/blob/atharva/IMPLEMENTATION_GIFs/cifar10_ffnn.gif)
