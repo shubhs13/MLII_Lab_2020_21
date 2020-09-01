@@ -1,0 +1,87 @@
+<html>
+    <head>
+        {% include 'index.html' %}
+    </head>
+    <body>
+        <div class="row" style="background: #2B2D2F;color: white; margin-bottom: 0;padding: 20;text-align: center;">
+          <div class="col-sm-1">
+            <a href="{{url_for('lab1_fp')}}"><img src="{{url_for('static',filename='img/logo-icon.png')}}"></a>
+          </div>
+          <div class="col" style="text-align: left;">
+            <h2>MNIST</h2>
+          </div>
+        </div>
+        <!-- <div style="width: 50%; margin: 0 auto;margin-bottom:50">
+          <p>
+            The MNIST database is a large database of handwritten digits that is commonly used for 
+            training various image processing systems. The database is also widely used for training 
+            and testing in the field of machine learning. It was created by "re-mixing" the samples 
+            from NIST's original datasets. The creators felt that since NIST's training dataset was taken 
+            from American Census Bureau employees, while the testing dataset was taken from American high school 
+            students, it was not well-suited for machine learning experiments. Furthermore, the black and 
+            white images from NIST were normalized to fit into a 28x28 pixel bounding box and anti-aliased, 
+            which introduced grayscale levels.
+          </p>
+        </div> -->
+        <div class="row" style="width: 75%;margin: 0 auto;display: flex;justify-content: space-between;margin-top: 30;">
+
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <form method="POST" class="col" action="/mnist_test" enctype="multipart/form-data">
+              <div class="fileinput-new thumbnail img-raised">
+                <img src="{{url_for('static',filename=img)}}" alt="..." width="400" height="400">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail img-raised" style="width: 400;height: 400;"></div>
+              <div>
+                <span class="btn btn-raised btn-round btn-default btn-file">
+                  <span class="fileinput-new btn btn-primary">Select image</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="file" id="file">
+                </span>
+                <button class="btn btn-success btn-round" type="submit">Submit</button>
+              </div>
+            </form>
+            </div>
+            <div class="col" style="margin-top: 100;">
+                <h1 style="font-weight: bolder;">{{op}}</h4>
+                <h1>{{result}}</h3>
+            </div>
+            <div class="col">
+              {% for val in value %}
+                <div class="progress m-t-30">
+                    <div class="progress-bar bg-danger wow animated progress-animated" style="width: {{ val }}%; height:6px;" role="progressbar"> <span class="sr-only">60% Complete</span> </div>
+                </div>
+                {% endfor %}
+          </div>
+        </div>
+        <!--<div style="width: 75%;margin: 0 auto;">
+            {% for val in value %}
+            <h5 class="m-t-30">Class {{classes[loop.index0]}}<span class="pull-right">{{val}}%</span></h5>
+            <div class="progress ">
+                <div class="progress-bar bg-danger wow animated progress-animated" style="width: {{val}}%; height:6px;" role="progressbar"> <span class="sr-only">60% Complete</span> </div>
+            </div>
+            {% endfor %}
+        </div>-->
+        <div style="margin-top: 50;">
+          <div style="width: 75%;margin: 0 auto;">
+            <div class="card card-outline-inverse">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">About MNIST</h4>
+                  </div>
+                <div class="card-block">
+                    <h3 class="card-title">MNIST</h3>
+                    <p class="card-text">The MNIST database is a large database of handwritten digits that is commonly used for 
+                      training various image processing systems. The database is also widely used for training 
+                      and testing in the field of machine learning. It was created by "re-mixing" the samples 
+                      from NIST's original datasets. The creators felt that since NIST's training dataset was taken 
+                      from American Census Bureau employees, while the testing dataset was taken from American high school 
+                      students, it was not well-suited for machine learning experiments. Furthermore, the black and 
+                      white images from NIST were normalized to fit into a 28x28 pixel bounding box and anti-aliased, 
+                      which introduced grayscale levels.</p>
+                    <a href="https://en.wikipedia.org/wiki/MNIST_database" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% include 'scripts.html' %}
+    </body>
+</html>

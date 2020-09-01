@@ -1,0 +1,103 @@
+<html>
+    <head>
+        {% include 'index.html' %}
+        <link href="{{ url_for('static',filename='css/new.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="sample-header" style="background-image: url('https://www.microsoft.com/en-us/research/uploads/prod/2020/05/FrontiersInMachineLearning_MCRWebHeader_1920x720-3-800x550.jpg');">
+            <div class="sample-header-section">
+              <h1>Machine Learning</h1>
+              <h2>Lab 2 </h2>
+            </div>
+          </div>
+          <div class="sample-section-wrap">
+            <div class="sample-section">
+              <p>
+                  This Lab focuses on making basic models with two of the most popular image
+                  datasets, i.e. MNIST and CIFAR10. The MNIST dataset.The MNIST model consists of numeric characters 
+                  ranging from 0 to 9 and the CIFAR10 dataset consits of classes of 'cars','trucks','cats','dogs' etc.
+                  achieves great training and testing accuracy of about 97% with Dense layers whereas in case
+                  of CIFAR10 it only achieves 45% with Dense. This is mainly because the images in MNIST 
+                  dataset are made for testing purpose where all the images are centered and all the
+                  images have black background and the numbers written with white color.
+              </p>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          
+          <div class="row" style="display: flex;width: 75%;margin: 0 auto;justify-content: space-evenly;">
+            <div class="card col" style="margin: 10;">
+                <img class="card-img-top img-fluid" src="{{url_for('static',filename='img/mnist.png')}}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">MNIST</h4>
+                    <p class="card-text">Simple Dense Network for the popular MNIST dataset.</p>
+                    <a href="{{url_for('test_mnist')}}"><button class="btn btn-success" type="button" aria-expanded="false" aria-controls="collapseExample">
+                        Test MNIST
+                    </button></a>
+                </div>
+            </div>
+            <div class="card col" style="margin: 10;">
+                <img class="card-img-top img-fluid" src="{{url_for('static',filename='img/cifar10.jpg')}}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">CIFAR10 without CNN</h4>
+                    <p class="card-text">Simple Dense Network for CIFAR10 dataset.</p>
+                    <a href="{{url_for('test_cifar10')}}"><button class="btn btn-success" type="button" aria-expanded="false" aria-controls="collapseExample">
+                        Test CIFAR10
+                    </button></a>
+                </div>
+            </div>
+            <div class="card col" style="margin: 10;">
+                <img class="card-img-top img-fluid" src="{{url_for('static',filename='img/cifar10.jpg')}}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">CIFAR10 with CNN</h4>
+                    <p class="card-text">Convolutional Neural Network for CIFAR10 dataset.</p>
+                    <a href="{{url_for('test_cifar10_cnn')}}"><button class="btn btn-success" type="button" aria-expanded="false" aria-controls="collapseExample">
+                        Test CIFAR10
+                    </button></a>
+                </div>
+            </div>
+          </div>    
+        </div>
+        <div class="row" style="display: flex;width: 75%;margin: 0 auto;justify-content: space-evenly;">
+        <div class="card col" style="margin: 10;">
+            <img class="card-img-top img-fluid" src="{{url_for('static',filename='img/reports.png')}}" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">MNIST Report</h4>
+                <p class="card-text">Simple Dense Network for CIFAR10 dataset.</p>
+                <a href="{{url_for('mnist_report')}}"><button class="btn btn-success" type="button" aria-expanded="false" aria-controls="collapseExample">
+                    Go to
+                </button></a>
+            </div>
+        </div>
+        <div class="card col" style="margin: 10;">
+            <img class="card-img-top img-fluid" src="{{url_for('static',filename='img/reports.png')}}" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">CIFAR10 without CNN Report</h4>
+                <p class="card-text">Simple Dense Network for CIFAR10 dataset.</p>
+                <a href="{{url_for('cifar10_report')}}"><button class="btn btn-success" type="button" aria-expanded="false" aria-controls="collapseExample">
+                    Go to
+                </button></a>
+            </div>
+        </div>
+        <div class="card col" style="margin: 10;">
+            <img class="card-img-top img-fluid" src="{{url_for('static',filename='img/reports.png')}}" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">CIFAR10 with CNN Report</h4>
+                <p class="card-text">Simple Dense Network for CIFAR10 dataset.</p>
+                <a href="{{url_for('cifar10_cnn_report')}}"><button class="btn btn-success" type="button" aria-expanded="false" aria-controls="collapseExample">
+                    Go to
+                </button></a>
+            </div>
+        </div>
+    </div>
+        </div>
+        <br>
+              <br>
+              <br>
+              <br>
+        {% include 'scripts.html' %}
+        <script src="{{ url_for('static',filename='js/new.js') }}"></script>
+    </body>
+</html>
