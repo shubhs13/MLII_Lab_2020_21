@@ -10,7 +10,7 @@ st.set_option('deprecation.showfileUploaderEncoding',False)
 @st.cache(allow_output_mutation=True)
 def lm():
   
-  model = tf.keras.models.load_model('D:\Programming\Sem_7\ML_2\Models\CNN_CIFAR10_new.h5')
+  model = tf.keras.models.load_model('CNN_CIFAR10_new.h5')
   return model
 
 model = lm()
