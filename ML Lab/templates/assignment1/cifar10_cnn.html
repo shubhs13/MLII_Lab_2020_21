@@ -1,0 +1,67 @@
+<html>
+    <head>
+        {% include 'index.html' %}
+    </head>
+    <body>
+      <div class="row" style="background: #2B2D2F;color: white; margin-bottom: 0;padding: 20;text-align: center;">
+        <div class="col-sm-1">
+          <a href="{{url_for('lab1_fp')}}"><img src="{{url_for('static',filename='img/logo-icon.png')}}"></a>
+        </div>
+        <div class="col" style="text-align: left;">
+          <h2>MNIST</h2>
+        </div>
+      </div>
+        <div class="row" style="width: 75%;margin: 0 auto;display: flex;justify-content: space-between;">
+
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <form method="POST" class="col" action="/cifar10_cnn_test" enctype="multipart/form-data">
+              <div class="fileinput-new thumbnail img-raised">
+                <img src="{{url_for('static',filename=img)}}" alt="..." width="400" height="400">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail img-raised" style="width: 400;height: 400;"></div>
+              <div>
+                <span class="btn btn-raised btn-round btn-default btn-file">
+                  <span class="fileinput-new btn btn-primary">Select image</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="file" id="file">
+                </span>
+                <button class="btn btn-success btn-round" type="submit">Submit</button>
+              </div>
+            </form>
+            </div>
+            <div class="col" style="margin-top: 100;">
+                <div style="width: 75%;margin: 0 auto;">
+                    <h4 style="font-weight: bolder;">{{op}}</h4>
+                    <h3>{{result}}</h3>
+                </div>
+            </div>
+            <div class="col">
+              {% for val in value %}
+                <div class="progress m-t-30">
+                    <div class="progress-bar bg-danger wow animated progress-animated" style="width: {{ val }}%; height:6px;" role="progressbar"> <span class="sr-only">60% Complete</span> </div>
+                </div>
+                {% endfor %}
+          </div>
+        </div>
+        <div style="margin-top: 50;">
+          <div style="width: 75%;margin: 0 auto;">
+            <div class="card card-outline-inverse">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">About CIFAR10</h4>
+                  </div>
+                <div class="card-block">
+                    <h3 class="card-title">CIFAR10</h3>
+                    <p class="card-text">The CIFAR-10 dataset (Canadian Institute For Advanced Research) is a 
+                      collection of images that are commonly used to train machine learning and computer vision 
+                      algorithms. It is one of the most widely used datasets for machine learning research. 
+                      The CIFAR-10 dataset contains 60,000 32x32 color images in 10 different classes.[3] The 10 
+                      different classes represent airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, 
+                      and trucks. There are 6,000 images of each class.</p>
+                    <a href="https://en.wikipedia.org/wiki/CIFAR-10" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% include 'scripts.html' %}
+    </body>
+</html>
