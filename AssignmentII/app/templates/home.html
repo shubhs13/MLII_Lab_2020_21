@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+
+{% block header %}
+<title>Home</title>
+<div class="jumbotron jumbotron-fluid" style="background-color:burlywood;">
+    <div class="container">
+      <h1 class="display-4" style="font-family: 'Times New Roman', Times, serif; font-style: normal;">Assignment II</h1>
+      <p class="lead">To train a model on MNIST, CIFAR10 dataset and use different configurations.</p>
+    </div>
+  </div>
+
+{% endblock %}
+                                                                                                                
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 25em; background-color: bisque;">
+              <div class="card-body">
+                <h4 class="card-title">
+                    MNIST Model
+                </h4>
+                <p class="card-description">
+                    The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from NIST. The digits have been size-normalized and centered in a fixed-size image.
+
+                    It is a good database for people who want to try learning techniques and pattern recognition methods on real-world data while spending minimal efforts on preprocessing and formatting. 
+                </p>
+                <div class="card-stats justify-content-center">
+                  <a href="{{url_for('home.mnist')}}" class="btn btn-white btn-round">Test it</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card" style="width: 25em;background-color: bisque;">
+              <div class="card-body">
+                <h4 class="card-title">
+                    CIFAR10 without CNN
+                </h4>
+                <p class="card-description">
+                    The CIFAR-10 small photo classification problem is a standard dataset used in computer vision and deep learning.
+
+                    Although the dataset is effectively solved, it can be used as the basis for learning and practicing how to develop, evaluate, and use convolutional deep learning neural networks for image classification from scratch.
+                </p>
+                <div class="card-stats justify-content-center">
+                  <a href="{{url_for('home.ffd_cifar10')}}" class="btn btn-white btn-round">Test it</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <div class="col">
+            <div class="card" style="width: 25em;background-color: bisque;">
+              <div class="card-body">
+                <h4 class="card-title">
+                  CIFAR10 with CNN
+                </h4>
+                <p class="card-description">
+                  With CNN, accuracy increases, it is difficult to train a non-cnn model on CIFAR-10.
+                </p>
+                <div class="card-stats justify-content-center">
+                  <a href="{{url_for('home.cnn_cifar10')}}" class="btn btn-white btn-round">Test it</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+{% endblock %}
