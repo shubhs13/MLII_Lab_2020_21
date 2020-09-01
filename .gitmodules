@@ -1,0 +1,9 @@
+[submodule "Hand-Written-Digit-Recognition-MNIST-DNN-GUI-using-Streamlit"]
+	path = Hand-Written-Digit-Recognition-MNIST-DNN-GUI-using-Streamlit
+	url = https://github.com/Jeevan-Thukrul/Hand-Written-Digit-Recognition-MNIST-DNN-GUI-using-Streamlit.git
+[submodule "Image-Classification-CIFAR10-with-CNN-dataset-GUI-Streamlit"]
+	path = Image-Classification-CIFAR10-with-CNN-dataset-GUI-Streamlit
+	url = https://github.com/Jeevan-Thukrul/Image-Classification-CIFAR10-with-CNN-dataset-GUI-Streamlit.git
+[submodule "Image-Classification-CIFAR10-with-Feedforward-Neural-Network-dataset-GUI-Streamlit"]
+	path = Image-Classification-CIFAR10-with-Feedforward-Neural-Network-dataset-GUI-Streamlit
+	url = https://github.com/Jeevan-Thukrul/Image-Classification-CIFAR10-with-Feedforward-Neural-Network-dataset-GUI-Streamlit.git

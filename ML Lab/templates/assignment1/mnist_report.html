@@ -1,0 +1,122 @@
+<html>
+    <head>
+        {% include 'index.html' %}
+    </head>
+    <body>
+        <div class="row" style="background: #2B2D2F;color: white; margin-bottom: 0;padding: 20;text-align: center;">
+            <div class="col-sm-1">
+              <a href="{{url_for('lab1_fp')}}"><img src="{{url_for('static',filename='img/logo-icon.png')}}"></a>
+            </div>
+            <div class="col" style="text-align: left;">
+              <h2>MNIST Report</h2>
+            </div>
+          </div>
+        <div style="width: 75%;margin: 0 auto;">
+            <div class="row" style="display: flex;justify-content: space-evenly;">
+                <div class="col">
+                    <img src="{{url_for('static',filename='saved plots/mnist_eval_curve.png')}}">
+                </div>
+                <div class="col">
+                    <div class="card" style="margin-top: 60;">
+                        <div class="card-block">
+                            <div class="vtabs">
+                                <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home4" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Precision</span> </a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile4" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Recall</span></a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages4" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">F1 Score</span></a> </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="home4" role="tabpanel">
+                                        <div class="p-20">
+                                            <h3>{{ p }}</h3>
+                                            <br>
+                                            <h4>The Precision Score for MNIST model</h4>
+                                            <p>Precision talks about how precise/accurate your model is out of those predicted positive, how many of them are actual positive.</p>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-20" id="profile4" role="tabpanel">
+                                        <div class="p-20">
+                                            <h3>{{ r }}</h3>
+                                            <br>
+                                            <h4>The Recall Score for MNIST model</h4>
+                                            <p>Recall actually calculates how many of the Actual Positives our model capture through labeling it as Positive (True Positive).</p>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-20" id="messages4" role="tabpanel">
+                                        <div class="p-20">
+                                            <h3>{{ f }}</h3>
+                                            <br>
+                                            <h4>The F1 Score for MNIST model</h4>
+                                            <p>The F1 score is a measure of a test's accuracy. It is calculated from the precision and recall of the test.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 100;">
+                    <h3 style="font-weight: bolder;margin-top: 180;margin-right: 20;">
+                        Model Architecture
+                    </h3>
+                    <div class="card" style="width: 700;">
+                        <div class="card-block">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Layers</th>
+                                        <th>Output Shape</th>
+                                        <th>Parameters #</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="active">
+                                        <td scope="row">1</td>
+                                        <td>flatten_1 (Flatten)</td>
+                                        <td>(32, 784)</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td scope="row">2</td>
+                                        <td>dense_3 (Dense)</td>
+                                        <td>(32, 64)</td>
+                                        <td>50240</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td scope="row">3</td>
+                                        <td>dense_4 (Dense)</td>
+                                        <td>(32, 32)</td>
+                                        <td>2080</td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td scope="row">4</td>
+                                        <td>dense_5 (Dense)</td>
+                                        <td>(32, 10)</td>
+                                        <td>330</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td scope="row">5</td>
+                                        <td colspan="3">Total params: 52,650</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td scope="row">6</td>
+                                        <td colspan="3">Trainable params: 52,650</td>
+                                    </tr>
+                                    <tr class="danger">
+                                        <td scope="row">7</td>
+                                        <td colspan="3">Non-trainable params: 0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% include 'scripts.html' %}
+    </body>
+</html>
