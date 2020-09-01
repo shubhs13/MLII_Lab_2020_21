@@ -1,0 +1,173 @@
+{% include 'header.html' %}
+
+{% block header %}
+<title>CIFAR10 Model</title>
+<div class="jumbotron jumbotron-fluid" style="background-color:burlywood;">
+    <div class="container">
+      <h1 class="display-4" style="font-family: 'Times New Roman', Times, serif; font-style: normal;">CIFAR10 Model</h1>
+      <p class="lead">The model is developed using Convolutional Neural Network. You can try your own input.</p>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+<!--Model IMG Input-->
+<div class="container" style="align-items: center; padding-bottom: 5em;">
+<div class="row">
+    <div class="col">
+      <h4>Your Sample Image</h4>
+      <form method="post" enctype="multipart/form-data" action="/cnn_cifar10">
+      <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+        <div class="fileinput-new thumbnail img-raised">
+          <img src="{{url_for('static', filename=img)}}">
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+        <div>
+          <span class="btn btn-raised btn-round btn-default btn-file">
+            <span class="fileinput-new">Select image</span>
+            <span class="fileinput-exists">Change</span>
+            <input type="file" name="file" id="file"/>
+          </span>
+          <button class="btn btn-primary btn-round" type="submit"  value="upload">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+    <span><h3 style="font-weight: bolder;">{{ output }}</h3></span>
+    <span><h3>{{ value }}</h3></span>
+    </form>
+  </div>
+</div>
+</div>
+
+<!--Table of Outputs-->
+<div class ="container" style="align-items: center;">
+  <h4>Some examples of tested images</h4>
+<div class="col-lg-12 col-md-12 ml-auto mr-auto">
+  <div class="table-responsive">
+    <table class="table table-shopping">
+      <thead>
+        <tr>
+          <th class="text-center">Image</th>
+          <th>Expected Output</th>
+          <th class="th-description">Predicted Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="img-container">
+              <img src="{{url_for('static', filename='img/car.jpg')}}">
+            </div>
+          </td>
+          <td class="td-name">
+            <p>Automobile</p>
+          </td>
+          <td class="td-name">
+            <p>Automobile</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="img-container">
+              <img src="{{url_for('static', filename='img/cat.jpg')}}">
+            </div>
+          </td>
+          <td class="td-name">
+            <p>Cat</p>
+          </td>
+          <td class="td-name">
+            <p>Dog</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="img-container">
+              <img src="{{url_for('static', filename='img/car1.jpg')}}">
+            </div>
+          </td>
+          <td class="td-name">
+            <p>Automobile</p>
+          </td>
+          <td class="td-name">
+            <p>Truck</p>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <div class="img-container">
+                <img src="{{url_for('static', filename='img/deer.jpg')}}">
+              </div>
+            </td>
+            <td class="td-name">
+              <p>Deer</p>
+            </td>
+            <td class="td-name">
+              <p>Deer</p>
+            </td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<!--Basic Kachra-->
+<div class="container" style="align-items: center;">
+    <!--                nav tabs	             -->
+    <div id="nav-tabs">
+       <div class="row">
+        <div class="col">
+          <h3><small>About the model</small></h3>
+          <!-- Tabs with icons on Card -->
+          <div class="card card-nav-tabs" style="background-color: bisque;">
+            <div class="card-header card-header-primary" >
+              <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#profile" data-toggle="tab">
+                        Configuration 
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#messages" data-toggle="tab">
+                       Observations
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#settings" data-toggle="tab">
+                        Accuracy
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body ">
+              <div class="tab-content text-center">
+                <div class="tab-pane active" id="profile">
+                  <p> Layer Configuration:- Conv2D(32), MaxPooling2D((2,2)), Dropout(0.2), Conv2D(64), MaxPooling2D((2,2)),
+                    Dropout(0.2), Conv2D(64), MaxPooling2D((2,2)), Dropout(0.2), Flatten(), Dense(64), Dense(10)</p>
+                </div> 
+                <div class="tab-pane" id="messages">
+                  <p>The input has been normalised. The CNN takes every parameter into account. Intially the model was overfitted, therefore tried using different kinds of layers. Adding Dropout Layers helped to reduce the overfitting. While studying, have came across terms like batch normalisation for increasing accuracy.</p>
+                </div>
+                <div class="tab-pane" id="settings">
+                  <p>Training = 74%
+                     Testing = 70%
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
