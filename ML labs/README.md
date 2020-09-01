@@ -1,3 +1,3 @@
-# handwriting_detection
+# ML labs App
 
 A Ml lab assignment application.
